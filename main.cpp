@@ -88,7 +88,7 @@ class Graph {
 
         else if ( esize > nsize + 1 ) throw std::runtime_error("Too many vertices / too few edges !");
 
-        /* for ( int i = 0; i <= nsize; i++ ) { bool yesno = true; int from2, to2;
+        for ( int i = 0; i <= nsize; i++ ) { bool yesno = true; int from2, to2;
 
             while ( yesno ) {  _re :
 
@@ -113,10 +113,7 @@ class Graph {
 
             std::cout << from2 << " - " << to2 << " : " << edges.back().weight << std::endl;
 
-        } */
-
-        edges.push_back({0,2}); edges.push_back({2,1}); edges.push_back({1,4}); edges.push_back({5,6});
-        std::cout << "\n ---> " << iscycle( edges ) << "\n";
+        }
     };
 
     std::vector<Edge> presult;
@@ -161,7 +158,7 @@ class Graph {
 
 int main()
 {
-    try { Graph g { 4, 3 };
+    try { Graph g { 4, 7 };
 
           g.Prim();
 
