@@ -1,1 +1,1 @@
-# randGraph-algorithms
+# Graph-algorithms
