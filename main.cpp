@@ -33,49 +33,7 @@ class Graph {
         bool cycle = false;
 
         for ( auto &e0 : edges ) if ( e0.from > e0.to ) std::swap( e0.from, e0.to );
-
-        auto sortFr = [] ( Edge a, Edge b ) { return a.from < b.from; };
-        std::sort( edges.begin(), edges.end(), sortFr );
-
-        auto sortTo = [] ( Edge a, Edge b ) { return a.to < b.to; };
-        std::sort( edges.begin(), edges.end(), sortTo );
-
-        std::vector<int> visited;
-
-        class iTedges { public:
-
-            void operator()( std::vector<Edge> &edges, Edge &estart, std::vector<int> &visited )
-
-            {
-                estart.cchecked = true;
-
-                visited.push_back( estart.to );
-
-                for ( auto &e0 : edges ) { bool pathend = false;
-
-                    if ( !e0.cchecked && estart.to == e0.from )
-
-                    { this->operator()( edges, e0, visited ); pathend = true; }
-
-                    if ( pathend ) break;
-                }
-            }
-        };
-
-        for ( auto& e0 : edges ) { iTedges itE{};
-
-            if ( !e0.cchecked ) { bool isfrom = false, isto = false;
-
-                for ( auto &v0 : visited ) {
-
-                    if ( v0 == e0.from ) isfrom = true; if ( v0 == e0.to ) isto = true;
-
-                } if ( isfrom && isto ) { cycle = true; break; } visited.clear();
-
-                visited.push_back(e0.from); itE.operator()( edges, e0, visited ); }
-        }
-
-        if ( cycle ) std::cout << "CYCLE ! -> ";
+///////////////////
 
         return cycle;
     }
